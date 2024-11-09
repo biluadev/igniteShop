@@ -37,8 +37,7 @@ export default function Home({ products }: HomeProps) {
       {products.map(product => (
         <div key={product.id} className="keen-slider__slide">
           {isMounted ? (
-            <Link href={`/product/${product.id}`} legacyBehavior>
-              <a>
+            <Link href={`/product/${product.id}`} key={product.id} prefetch={false}>
                 <Product>
                   <Image src={product.imageUrl} width={520} height={480} alt="" />
                   <footer>
@@ -46,7 +45,6 @@ export default function Home({ products }: HomeProps) {
                     <span>{product.price}</span>
                   </footer>
                 </Product>
-              </a>
             </Link>
           ) : (
             <Product>
